@@ -1,0 +1,11 @@
+<!--(4) Для захисту від XSS використовуэмо змінні безпосередньо.
+Django екранує небезпечні символи, як <, >, &.-->
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %} <!--(6) Для захисту від CSRF-->
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+<div>
+    {{ trusted_html|safe }} <!--(4) Для захисту від XSS Використовуйте safe лише там де безпечно-->
+</div>
